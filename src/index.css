@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================= THEME VARIABLES ================= */
+:root {
+  --bg: 2 6 23;            /* near-black */
+  --fg: 248 250 252;       /* off-white */
+
+  /* GREEN / TEAL GLOW (reference-like) */
+  --accent: 16 185 129;
+  --glow: 20 184 166;
+
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+}
+
+/* ================= BASE BACKGROUND ================= */
+html,
+body {
+  min-height: 100%;
+  font-family: var(--font-sans);
+  color: rgb(var(--fg));
+  background-color: rgb(var(--bg));
+  background-image:
+    radial-gradient(
+      1200px 600px at 15% -10%,
+      rgba(var(--glow), 0.35),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 85% 10%,
+      rgba(var(--accent), 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      1000px 600px at 50% 120%,
+      rgba(var(--glow), 0.25),
+      transparent 65%
+    );
+  background-attachment: fixed;
+}
+
+/* ================= GRID OVERLAY ================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px
+    );
+
+  background-size: 64px 64px;
+}
+
+/* ================= APP LAYER ================= */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
